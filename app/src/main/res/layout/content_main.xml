@@ -186,7 +186,6 @@
         android:id="@+id/btnDecimal"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="8dp"
         android:text="@string/strDecimal"
         app:layout_constraintBottom_toTopOf="@+id/guideline7"
         app:layout_constraintEnd_toStartOf="@+id/btnPlus"
