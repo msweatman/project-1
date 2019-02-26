@@ -36,19 +36,20 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_end="32sp" />
 
-    <EditText
+    <TextView
         android:id="@+id/outputField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
         android:autofillHints=""
+        android:ems="10"
+        android:importantForAutofill="no"
         android:inputType="textPersonName"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/btnClr"
         app:layout_constraintEnd_toStartOf="@+id/guideline5"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/guideline6"
-        android:importantForAutofill="no" />
+        app:layout_constraintTop_toBottomOf="@+id/guideline6" />
 
     <Button
         android:id="@+id/btnPercent"

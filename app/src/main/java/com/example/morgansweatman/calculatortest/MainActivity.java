@@ -8,8 +8,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
+
 import android.widget.Button;
+import android.widget.*;
 
 import java.math.BigDecimal;
 
@@ -27,10 +28,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -38,28 +39,29 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-        btnZero = (Button) findViewById(R.id.btnZero);
-        btnOne = (Button) findViewById(R.id.btnOne);
-        btnTwo = (Button) findViewById(R.id.btnTwo);
-        btnThree = (Button) findViewById(R.id.btnThree);
-        btnFour = (Button) findViewById(R.id.btnFour);
-        btnFive = (Button) findViewById(R.id.btnFive);
-        btnSix = (Button) findViewById(R.id.btnSix);
-        btnSeven = (Button) findViewById(R.id.btnSeven);
-        btnEight = (Button) findViewById(R.id.btnEight);
-        btnNine = (Button) findViewById(R.id.btnNine);
-        btnPlus = (Button) findViewById(R.id.btnPlus);
-        btnSubtract = (Button) findViewById(R.id.btnSubtract);
-        btnDivide = (Button) findViewById(R.id.btnDivide);
-        btnMultiply = (Button) findViewById(R.id.btnMultiply);
-        btnSqrt = (Button) findViewById(R.id.btnSqrt);
-        btnPosNeg = (Button) findViewById(R.id.btnPosNeg);
-        btnPercent = (Button) findViewById(R.id.btnPercent);
-        btnClr = (Button) findViewById(R.id.btnClr);
-        btnEquals = (Button) findViewById(R.id.btnEquals);
-        btnDecimal = (Button) findViewById(R.id.btnDecimal);
+        btnZero = findViewById(R.id.btnZero);
+        btnOne = findViewById(R.id.btnOne);
+        btnTwo = findViewById(R.id.btnTwo);
+        btnThree = findViewById(R.id.btnThree);
+        btnFour = findViewById(R.id.btnFour);
+        btnFive = findViewById(R.id.btnFive);
+        btnSix = findViewById(R.id.btnSix);
+        btnSeven = findViewById(R.id.btnSeven);
+        btnEight = findViewById(R.id.btnEight);
+        btnNine = findViewById(R.id.btnNine);
+        btnPlus = findViewById(R.id.btnPlus);
+        btnSubtract = findViewById(R.id.btnSubtract);
+        btnDivide = findViewById(R.id.btnDivide);
+        btnMultiply = findViewById(R.id.btnMultiply);
+        btnSqrt = findViewById(R.id.btnSqrt);
+        btnPosNeg = findViewById(R.id.btnPosNeg);
+        btnPercent = findViewById(R.id.btnPercent);
+        btnClr = findViewById(R.id.btnClr);
+        btnEquals = findViewById(R.id.btnEquals);
+        btnDecimal = findViewById(R.id.btnDecimal);
 
         t = findViewById(R.id.outputField);
+        sb = new StringBuilder();
 
         btnZero.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
         btnFive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sb.append("0");
+                sb.append("5");
                 t.setText(sb);
             }
         });
@@ -232,18 +234,30 @@ public class MainActivity extends AppCompatActivity {
                         result = String.valueOf(d);
                     }
 
-
                     t.setText(result);
                     sb.delete(0, sb.length());
                     sb.append(result);
                 }
 
                 else if(vals.length==2){
-                    String op = vals[0];
-                    Double num1 = Double.valueOf(vals[1]);
+                    Double num1 = Double.valueOf(vals[0]);
+                    String op = vals[1];
 
                     if(op.equals(getString(R.string.strSqrt))){
                         d = Math.sqrt(num1);
+                        result = String.valueOf(d);
+                    }
+                    else if(op.equals(getString(R.string.strPosNeg))){
+                        if(!(num1 == 0)) {
+                            d = num1 * -1;
+                            result = String.valueOf(d);
+                        }
+                        else {
+                            result = "NaN";
+                        }
+                    }
+                    else if (op.equals(getString(R.string.strPercent))) {
+                        d = num1/100;
                         result = String.valueOf(d);
                     }
 
